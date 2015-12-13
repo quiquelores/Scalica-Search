@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package search;
+
+service Search {
+  // DOCUMENTATION
+  rpc Index (IndexRequest) returns (IndexReply) {}
+  // DOCUMENTATION
+  rpc Search (SearchRequest) returns (SearchReply) {}
+}
+
+// The request to index a post.
+message IndexRequest {
+  // The post id in scalica
+  string post_id = 1;
+  // The post text
+  string text = 2;
+}
+
+// The Reply to use.
+message IndexReply {
+  int32 status = 1;
+}
+
+//
+message SearchRequest {
+  string query = 1;
+}
+
+message SearchReply {
+  repeated string post_ids = 1;
+}
+
