@@ -1,0 +1,37 @@
+{% extends "micro/base.html" %}
+{% load humanize %}
+{% load staticfiles %}
+{% block sidebar %}
+<img src="{% static "micro/images/user.png" %}" alt="Generic User"/> <br>
+<p>{{ user.username }} </p>
+{% endblock %}
+{% block content %}
+
+<div>
+{% if post_list %}
+  <table id="postlist">
+    {% for post in post_list %}
+      <tr>
+        <td>
+          <img src="{% static "micro/images/user_s.png" %}" alt="Generic User"/>
+        </td>
+        <td>
+          {{ post.text }}
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <a href="{% url 'micro:stream' post.user_id %}">
+            {{ post.user.username }}
+          </a>
+          ({{ post.pub_date|naturaltime }})
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p>Sorry, no posts matched your query.</p>
+{% endif %}
+</div>
+{% endblock %}

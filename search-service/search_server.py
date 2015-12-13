@@ -11,10 +11,12 @@ _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 class SearchServicer(search_pb2.BetaSearchServicer):
     def Index(self, request, context):
+        print("Indexing post:" + request.post_id)
         redisClient.addToIndex(request.post_id, request.text)
         return search_pb2.IndexReply(status=1)
 
     def Search(self, request, context):
+        print("Searching for posts containing: " + request.query)
         response = redisClient.getFromIndex(request.query)
         return search_pb2.SearchReply(post_ids=response)
 
