@@ -118,7 +118,7 @@ def follow(request):
 @login_required
 def search(request):
     query = request.GET.get('query')
-    post_ids = (1,2)#searchClient.search(query)
+    post_ids = searchClient.search(query)
     post_list = Post.objects.filter(id__in=post_ids).order_by('-pub_date')[0:10]
     context = {
       'post_list': post_list
