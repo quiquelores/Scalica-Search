@@ -16,7 +16,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='search.proto',
   package='search',
-  syntax='proto2',
+  # syntax='proto2',
   serialized_pb=b'\n\x0csearch.proto\x12\x06search\"-\n\x0cIndexRequest\x12\x0f\n\x07post_id\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"\x1c\n\nIndexReply\x12\x0e\n\x06status\x18\x01 \x01(\x05\"\x1e\n\rSearchRequest\x12\r\n\x05query\x18\x01 \x01(\t\"\x1f\n\x0bSearchReply\x12\x10\n\x08post_ids\x18\x01 \x03(\t2u\n\x06Search\x12\x33\n\x05Index\x12\x14.search.IndexRequest\x1a\x12.search.IndexReply\"\x00\x12\x36\n\x06Search\x12\x15.search.SearchRequest\x1a\x13.search.SearchReply\"\x00'
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -53,7 +53,7 @@ _INDEXREQUEST = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  # syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -84,7 +84,7 @@ _INDEXREPLY = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  # syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -115,7 +115,7 @@ _SEARCHREQUEST = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  # syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -146,7 +146,7 @@ _SEARCHREPLY = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
+  # syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
