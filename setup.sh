@@ -14,11 +14,11 @@ export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 ## Add below if not in .bashrc already
-echo '
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-' >> ~/.bashrc
+# echo '
+# export PATH="$HOME/.linuxbrew/bin:$PATH"
+# export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+# export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+# ' >> ~/.bashrc
 
 sudo apt-get update -y
 sudo apt-get install git -y
