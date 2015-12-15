@@ -10,6 +10,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 from .models import Following, Post, FollowingForm, PostForm, MyUserCreationForm
 
 import searchClient
+import sorter
 
 # Anonymous views
 #################
@@ -120,6 +121,7 @@ def search(request):
     query = request.GET.get('query')
     post_ids = searchClient.search(query)
     post_list = Post.objects.filter(id__in=post_ids).order_by('-pub_date')[0:10]
+    post_list = sorter.sort(post_list, query)
     context = {
       'post_list': post_list
     }
