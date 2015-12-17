@@ -24,6 +24,6 @@ def addToIndex(id, text):
     r_pipeline.execute()
 
 def getFromIndex(text):
-    intersection = r_client.sinter(tokenize(text))
+    intersection = r_client.sinter(stem(tokenize(text)))
     response = tuple(list(intersection))
     return response
