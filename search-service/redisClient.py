@@ -1,6 +1,6 @@
 import redis
 import re
-from nltk import PorterStemmer
+from nltk.stem.porter import PorterStemmer
 
 r_client = redis.Redis('localhost')
 r_pipeline = r_client.pipeline()
@@ -11,13 +11,14 @@ def tokenize(text):
 	return words
 
 def stem(words):
+	newwords=[]
 	for word in words:
-		PorterStemmer().stem_word(word)
-	return words
+		newwords.append(PorterStemmer().stem_word(word))
+	return newwords
 
 def addToIndex(id, text):
     tokentext = tokenize(text)
-    words = tokenize(tokentext)
+    words = stem(tokentext)
     for word in words:
         r_pipeline.sadd(word, id)
     r_pipeline.execute()
