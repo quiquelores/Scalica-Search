@@ -67,6 +67,9 @@ cd ../
 # Get the source files
 git clone https://github.com/quiquelores/Scalica-Search.git scalica
 
+# Install NLTK
+sudo pip install -U nltk
+
 # set up the database
 cd ${install_dir}/scalica/scalica/db
 ./install_db.sh
