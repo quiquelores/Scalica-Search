@@ -21,9 +21,17 @@ def addToIndex(id, text):
     words = stem(tokentext)
     for word in words:
         r_pipeline.sadd(word, id)
-    r_pipeline.execute()
+    try:
+        r_pipeline.execute()
+        return
+    except Exception as e:
+        print "Error adding words to redis index with exception: ", e
 
 def getFromIndex(text):
-    intersection = r_client.sinter(stem(tokenize(text)))
-    response = tuple(list(intersection))
-    return response
+    try:
+        intersection = r_client.sinter(stem(tokenize(text)))
+        response = tuple(list(intersection))
+        return response
+    except Exception as e:
+        print "Error retrieving intersection from redis db with exception: ", e
+        return ()

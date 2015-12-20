@@ -36,7 +36,6 @@ def are_words_in_order_of_query(post, query):
     query_array = query.split()
     q_i = 0
     p_i = 0
-
     i = 0
     j = 0
 
@@ -44,9 +43,6 @@ def are_words_in_order_of_query(post, query):
         while query_array[q_i]!=post_array[p_i]:
             p_i+= 1
             if p_i == len(post_array):
-                print post + " not in order"
                 return 0;
         q_i+= 1
-
-    print post + " is in order"
     return 1;
