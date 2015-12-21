@@ -121,7 +121,8 @@ def search(request):
     query = request.GET.get('query')
     post_ids = searchClient.search(query)
     post_list = Post.objects.filter(id__in=post_ids).order_by('-pub_date')[0:10]
-    post_list = sorter.sort(post_list, query)
+    follow_list = Following.objects.filter(follower=request.user)
+    post_list = sorter.sort(post_list, follow_list, query)
     context = {
       'post_list': post_list
     }

@@ -1,10 +1,12 @@
-from .models import Post
+from .models import Post, User, Following
 
-def sort(posts, query):
+def sort(posts, follow_list, query):
     #sort based of adjancy of words
     posts = sorted(posts, key=lambda x: num_of_adjacent_words_from_query(x.text, query), reverse=True)
     #sort based on order of words
     posts = sorted(posts, key=lambda x: are_words_in_order_of_query(x.text, query), reverse=True)
+    #sort based on whether the user follows the author of the post or not
+    posts = sorted(posts, key=lambda x: was_post_written_by_followees(x.user, follow_list), reverse=True)
 
     return posts
 
@@ -46,3 +48,12 @@ def are_words_in_order_of_query(post, query):
                 return 0;
         q_i+= 1
     return 1;
+
+#returns 1 if the post was written by someone the current user follows
+def was_post_written_by_followees(author, follow_list):
+    print follow_list
+    print author
+    for follow in follow_list:
+        if follow.followee == author:
+            return 1
+    return 0
