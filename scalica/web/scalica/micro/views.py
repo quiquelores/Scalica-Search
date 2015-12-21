@@ -126,3 +126,17 @@ def search(request):
       'post_list': post_list
     }
     return render(request, 'micro/search.html', context)
+
+#Search user on the basis of follow list
+ @login_required   
+def searchFollowList(request):
+    query = request.GET.get('query')
+    follow_ids = searchServer.searchServer(query)
+    follow_list = sorter.sort(post_list, query)
+    context = {
+      'follow_list': follow_list
+    }
+    data = searchServer.searchFollwers(request,context,group)
+    return render(request, 'micro/sortFollowers.html', context)
+
+
